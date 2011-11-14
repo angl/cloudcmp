@@ -1,0 +1,4 @@
+v0.1:
+  - Initial release of the tool
+  - Support Java-based benchmark tasks for compute/storage/network
+  - Scaling and wide-area tasks are TODOs

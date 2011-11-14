@@ -1,1 +1,116 @@
-This is the initial commit of the CloudCmp project.
+CloudCmp (v0.1)
+Ang Li (angl@cs.duke.edu)
+
+--
+
+CloudCmp is a benchmark suite for cloud platforms. It runs on a cloud instance
+as a web service, receiving commands from the clients and executing the
+corresponding benchmark tasks.
+
+CloudCmp supports a plenthora of benchmark tasks, which are described with more
+detail in our IMC'10 paper (./doc/imc10-cloudcmp.pdf).  There are three general
+categories: computation, storage, and network. Their implementations can be
+found under the packages org.cloudcmp.tasks.compute/store/network respectively.
+Extra tasks can be added by extending the Task class.
+
+The current version of CloudCmp comes with four "adaptors": Amazon, Microsoft,
+Google, and Rackspace. The purpose of the adaptors is to normalize the
+differences across multiple cloud platforms, and to offer a common interface
+for the upper-layer benchmarks. New adaptors can be added by extending the
+Adaptor base class, and implementing part or all of the member methods.
+
+- Requirements:
+
+Java 1.6
+Apache Ant
+Tomcat 6 (or other web servers supporting Java Servlets)
+
+- Before building Cloudcmp:
+
+Edit build.xml and update the configurations for Tomcat, AppEngine SDK, etc.
+
+- Build CloudCmp (for all clouds except Google AppEngine):
+
+ant war
+
+This will generate a file named "cloudcmp.war" in ./dist. Deploy the package in
+your target cloud platform and start using the tool. For how to deploy a Java
+web application in Microsoft Azure: http://archive.msdn.microsoft.com/winazuretomcat
+
+- Build CloudCmp (for Google AppEngine):
+
+First edit "./WebContent/WEB-INF/appengine-web.xml" and change
+"cloudcmp-test-suite" to the name of your AppEngine application. Then execute:
+
+ant appengine
+
+This will automatically upload the benchmark suite to AppEngine (if you set the
+username/password correctly in build.xml). You should be able to use the tool
+through the URL "http://my_app_name.appspot.com/api".
+
+- Use CloudCmp:
+
+All requests should be sent to the handler at "http://.../cloudcmp/api"
+(without the "cloudcmp" part for AppEngine), and all responses are encoded in
+JSON. Only GET requests are supported. The main HTTP parameter is "op", which
+tells the tool what to do. Here are a list of supported op values. For more
+detail, please read the handler code at org.cloudcmp.servlets.APIServlet.java
+
+"listadaptors"  :   list all adaptors.
+
+"listtasks"     :   list all supported benchmark tasks. Requires a parameter "adaptor"
+                    for the target adaptor (same for all following operations).
+
+"listservices"  :   list all services. Services are required to run network-related
+                    tasks. They serve as the "sinks" for those tasks.
+
+"listadaptorconfigs"    :   list the configurable items and their default values of
+                            the chosen adaptor.
+
+"listtaskconfigs"       :   list the configurable items and their default values of
+                            the chosen adaptor and the chosen task (identified by a
+                            "task" parameter).
+
+"startservice"  :   start a chosen service (parameter "service")
+
+"runtask"       :   run a chosen benchmark task (parameter "task")
+
+"starttask"     :   start a chosen task asynchronously and return immediately with
+                    a handle. Not all adaptors/tasks support this feature.
+
+"stoptask"      :   stop a run-away task. Set "handle" to be the task handle returned
+                    by "starttask".
+
+"taskisfinished"    :   test whether an async task has finished or not. Also requires
+                        the "handle" parameter.
+
+"taskretrieveresults"   :   retrieve the results of a finished async task. Requires
+                            "handle".
+
+Configurations:
+
+Except for the "list*" operations, you can change the configurable items
+returned by "listadaptorconfigs" and "listtaskconfigs". The configurations are
+also specified as HTTP parameters. All adaptor configurations are in the form
+of "ac_[name]=[value]", where [name/value] is the name/value of the
+configurable item. Similarly, task configurations take the form of
+"tc_[name]=[value]".
+
+Examples:
+
+http://1.2.3.4:8080/cloudcmp/api?listadaptors
+
+http://1.2.3.4:8080/cloudcmp/api?listtasks&adaptor=Amazon
+
+http://1.2.3.4:8080/cloudcmp/api?listtaskconfigs&adaptor=Amazon&task=compress
+
+http://1.2.3.4:8080/cloudcmp/api?startservice&adaptor=Amazon&ac_bw_port=9999&service=bandwidthservice
+
+http://1.2.3.4:8080/cloudcmp/api?op=runtask&adaptor=Microsoft&ac_azure_account_name=testtest&ac_azure_account_key=6RqA0u7u2lIRpHBM1PC9575H/U510z7b4k3rU7kNP2sdfasaf4w2pPv3myxwoZDpyXgoESqUmGtYKRTmx7UEnA==&task=tableget&tc_table_size=1000
+
+http://1.2.3.4:8080/cloudcmp/api?op=taskisfinished&adaptor=Microsoft&task=compress&handle=41
+
+http://1.2.3.4:8080/cloudcmp/api?op=taskretrieveresults&adaptor=Microsoft&task=compress&handle=41
+
+--
+Happy benchmarking!
