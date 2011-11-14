@@ -98,13 +98,13 @@ configurable item. Similarly, task configurations take the form of
 
 Examples:
 
-http://1.2.3.4:8080/cloudcmp/api?listadaptors
+http://1.2.3.4:8080/cloudcmp/api?op=listadaptors
 
-http://1.2.3.4:8080/cloudcmp/api?listtasks&adaptor=Amazon
+http://1.2.3.4:8080/cloudcmp/api?op=listtasks&adaptor=Amazon
 
-http://1.2.3.4:8080/cloudcmp/api?listtaskconfigs&adaptor=Amazon&task=compress
+http://1.2.3.4:8080/cloudcmp/api?op=listtaskconfigs&adaptor=Amazon&task=compress
 
-http://1.2.3.4:8080/cloudcmp/api?startservice&adaptor=Amazon&ac_bw_port=9999&service=bandwidthservice
+http://1.2.3.4:8080/cloudcmp/api?op=startservice&adaptor=Amazon&ac_bw_port=9999&service=bandwidthservice
 
 http://1.2.3.4:8080/cloudcmp/api?op=runtask&adaptor=Microsoft&ac_azure_account_name=testtest&ac_azure_account_key=6RqA0u7u2lIRpHBM1PC9575H/U510z7b4k3rU7kNP2sdfasaf4w2pPv3myxwoZDpyXgoESqUmGtYKRTmx7UEnA==&task=tableget&tc_table_size=1000
 
