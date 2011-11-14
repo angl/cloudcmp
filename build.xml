@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="cloudcmp">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <property name="web.dir" value="WebContent"/>
+    <property name="classes.dir" value="build/classes"/>
+    <property name="src" value="src"/>
+    <property name="dist" value="dist"/>
+    <property name="lib" value="lib"/>
+    <property name="resource" value="resource"/>
+
+    <!-- MODIFY THE FOLLOWING CONFIGURATIONS BEFORE YOU BUILD -->
+    <property name="tomcat.dir" value="../tomcat"/>
+    <property name="appengine.dir" value="../appengine"/>
+    <property name="appengine.username" value="!your gmail account!"/>
+    <property name="appengine.password" value="!your gmail password!"/>
+
+    <path id="tomcat.classpath">
+        <pathelement location="${tomcat.dir}/lib/jasper-el.jar"/>
+        <pathelement location="${tomcat.dir}/lib/catalina-ha.jar"/>
+        <pathelement location="${tomcat.dir}/lib/catalina-ant.jar"/>
+        <pathelement location="${tomcat.dir}/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="${tomcat.dir}/lib/jasper-jdt.jar"/>
+        <pathelement location="${tomcat.dir}/lib/annotations-api.jar"/>
+        <pathelement location="${tomcat.dir}/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="${tomcat.dir}/lib/jasper.jar"/>
+        <pathelement location="${tomcat.dir}/lib/tomcat-dbcp.jar"/>
+        <pathelement location="${tomcat.dir}/lib/tomcat-coyote.jar"/>
+        <pathelement location="${tomcat.dir}/lib/el-api.jar"/>
+        <pathelement location="${tomcat.dir}/lib/servlet-api.jar"/>
+        <pathelement location="${tomcat.dir}/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="${tomcat.dir}/lib/catalina-tribes.jar"/>
+        <pathelement location="${tomcat.dir}/lib/jsp-api.jar"/>
+        <pathelement location="${tomcat.dir}/lib/catalina.jar"/>
+    </path>
+
+    <path id="cloudcmp.classpath">
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${lib}/appengine-api-1.0-sdk-1.5.5.jar"/>
+        <pathelement location="${lib}/appengine-api-labs-1.5.5.jar"/>
+        <pathelement location="${lib}/appengine-jsr107cache-1.5.5.jar"/>
+        <pathelement location="${lib}/jsr107cache-1.1.jar"/>
+        <pathelement location="${lib}/orm/datanucleus-appengine-1.0.9.final.jar"/>
+        <pathelement location="${lib}/orm/datanucleus-core-1.1.5.jar"/>
+        <pathelement location="${lib}/orm/datanucleus-jpa-1.1.5.jar"/>
+        <pathelement location="${lib}/orm/geronimo-jpa_3.0_spec-1.1.1.jar"/>
+        <pathelement location="${lib}/orm/geronimo-jta_1.1_spec-1.1.1.jar"/>
+        <pathelement location="${lib}/orm/jdo2-api-2.3-eb.jar"/>
+        <pathelement location="${lib}/azure-java.jar"/>
+        <pathelement location="${lib}/azure-lib.jar"/>
+        <pathelement location="${lib}/commons-cli-1.1.jar"/>
+        <pathelement location="${lib}/commons-io-1.4.jar"/>
+        <pathelement location="${lib}/commons-lang-2.4.jar"/>
+        <pathelement location="${lib}/java-cloudfiles.jar"/>
+        <pathelement location="${lib}/junit.jar"/>
+        <pathelement location="${lib}/cpdetector_1.0.8.jar"/>
+        <pathelement location="${lib}/log4j-1.2.15.jar"/>
+        <pathelement location="${lib}/xercesImpl-2.8.1.jar"/>
+        <pathelement location="${lib}/aws-java-sdk-1.2.9.jar"/>
+        <pathelement location="${lib}/commons-codec-1.3.jar"/>
+        <pathelement location="${lib}/commons-logging-1.1.1.jar"/>
+        <pathelement location="${lib}/httpclient-4.1.1.jar"/>
+        <pathelement location="${lib}/httpcore-4.1.jar"/>
+        <pathelement location="${lib}/jackson-core-asl-1.4.3.jar"/>
+        <pathelement location="${lib}/mail-1.4.3.jar"/>
+        <pathelement location="${lib}/stax-1.2.0.jar"/>
+        <pathelement location="${lib}/stax-api-1.0.1.jar"/>
+        <pathelement location="${lib}/jl1.0.jar"/>
+        <pathelement location="${lib}/sunflow.jar"/>
+        <pathelement location="${lib}/janino.jar"/>
+        <pathelement location="${lib}/json_simple-1.1.jar"/>
+        <path refid="tomcat.classpath"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <mkdir dir="bin"/>
+        <mkdir dir="dist"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="bin"/>
+        <delete dir="build/classes"/>
+        <delete dir="dist"/>
+        <delete dir="${web.dir}/WEB-INF/classes"/>
+        <delete dir="${web.dir}/WEB-INF/lib"/>
+    </target>
+
+    <target depends="clean" name="cleanall"/>
+
+    <target depends="init" name="build">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="cloudcmp.classpath"/>
+        </javac>
+    </target>
+
+    <target name="war" depends="build">
+        <copy todir="${web.dir}/WEB-INF/classes">
+            <fileset dir="${classes.dir}" includes="**/*.class"/>
+        </copy>
+        <copy todir="${web.dir}/WEB-INF/lib">
+            <fileset dir="${lib}" includes="*.jar"/>
+        </copy>
+        <war destfile="${dist}/cloudcmp.war" webxml="${web.dir}/WEB-INF/web.xml" basedir="${web.dir}">
+            <fileset dir="${classes.dir}"
+                includes="*"/>
+        </war>
+        <delete dir="${tomcat.dir}/webapps/cloudcmp"/>
+        <copy file="${dist}/cloudcmp.war" todir="${tomcat.dir}/webapps"/>
+    </target>
+
+    <target name="appengine" depends="war">
+        <exec executable="${appengine.dir}/bin/appcfg.sh" inputstring="${appengine.password}">
+            <arg line="-e ${appengine.username}"/>
+            <arg value="update"/>
+            <arg value="${web.dir}"/>
+        </exec>
+    </target>
+
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+</project>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/renderx/examples/meeting
+END
+meeting_minutes.fo
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/renderx/examples/meeting/meeting_minutes.fo
+END
+meeting_minutes.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/renderx/examples/meeting/meeting_minutes.xsl
+END
+meeting_minutes.xml.SAX.canon
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/renderx/examples/meeting/meeting_minutes.xml.SAX.canon
+END
+meeting_minutes.xml.Stream.canon
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/renderx/examples/meeting/meeting_minutes.xml.Stream.canon
+END
+meeting_minutes.xml.DOM.canon
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/renderx/examples/meeting/meeting_minutes.xml.DOM.canon
+END
+meeting_minutes.xml
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/renderx/examples/meeting/meeting_minutes.xml
+END

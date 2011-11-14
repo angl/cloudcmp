@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes
+END
+recipes.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xsl
+END
+recipes.xml.SAX.canon
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xml.SAX.canon
+END
+recipes.xml.Stream.canon
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xml.Stream.canon
+END
+recipes.xml.DOM.canon
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xml.DOM.canon
+END
+recipes.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xml
+END
+recipes.xml.SAX.tidy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xml.SAX.tidy.xml
+END
+recipes.xml.Stream.tidy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xml.Stream.tidy.xml
+END
+recipes.xml.DOM.tidy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_xwy/cloud/!svn/ver/5/measurement/apps/compute-benchmarks/resources/xml.transform/recipes/recipes.xml.DOM.tidy.xml
+END

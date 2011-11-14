@@ -6,12 +6,16 @@ The CloudCmp benchmark suite includes three main components:
 
   a) Cloud adaptors
   b) Benchmark tasks
-  c) Controller
+  c) Services
 
 The cloud adaptors abstract away the different native APIs provided by each
 cloud provider and provide common interfaces to the benchmark tasks. The
 benchmark tasks use the adaptor interfaces to run several local and distributed
-benchmark tasks. The controller component exposes a web service interface to
+benchmark tasks. The services run in background and are used by some benchmark
+tasks. For instance, the TCP server service runs to accept and sink incoming
+TCP traffic.
+
+controller component exposes a web service interface to
 the benchmark user to control the experiments.
 
 Most parts of the suite are implemented in Java, and as a result it is only
