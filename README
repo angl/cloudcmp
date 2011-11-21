@@ -1,5 +1,5 @@
 CloudCmp (v0.1)
-Ang Li (angl@cs.duke.edu)
+cloudcmp@cs.duke.edu
 
 --
 
@@ -24,18 +24,22 @@ Adaptor base class, and implementing part or all of the member methods.
 Java 1.6
 Apache Ant
 Tomcat 6 (or other web servers supporting Java Servlets)
+SPECjvm2008 (can be downloaded for free from http://www.spec.org/download.html)
 
 - Before building Cloudcmp:
 
 Edit build.xml and update the configurations for Tomcat, AppEngine SDK, etc.
+
+Install SPECjvm2008, and then run ./integrate_SPEC.pl to integrate some SPEC
+benchmark tasks into the suite.
 
 - Build CloudCmp (for all clouds except Google AppEngine):
 
 ant war
 
 This will generate a file named "cloudcmp.war" in ./dist. Deploy the package in
-your target cloud platform and start using the tool. For how to deploy a Java
-web application in Microsoft Azure: http://archive.msdn.microsoft.com/winazuretomcat
+your target cloud platform and start using the tool. How to deploy a Java web
+application in Microsoft Azure: http://archive.msdn.microsoft.com/winazuretomcat
 
 - Build CloudCmp (for Google AppEngine):
 
